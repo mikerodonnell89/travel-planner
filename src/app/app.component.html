@@ -31,8 +31,8 @@
             <td>{{row.destination}}</td>
             <td >{{row.notes ? row.notes : ''}}</td>
             <td>
-              <a style="cursor: pointer;" (click)="download(row.files[0])">
-                <span *ngFor="let file of files">
+              <a style="cursor: pointer;" *ngFor="let file of row.files">
+                <span (click)="download(file)" style="margin-right: 5px;">
                   {{file.name}}
                 </span>
               </a>
