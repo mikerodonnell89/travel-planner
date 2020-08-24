@@ -32,8 +32,8 @@
             <td fd-table-cell>{{row.destination}}</td>
             <td fd-table-cell>{{row.notes ? row.notes : ''}}</td>
             <td fd-table-cell>
-              <a style="cursor: pointer;" fd-link (click)="download(row.files[0])">
-                <span *ngFor="let file of files">
+              <a style="cursor: pointer;" fd-link>
+                <span *ngFor="let file of row.files" (click)="download(file)">
                   {{file.name}}
                 </span>
               </a>
