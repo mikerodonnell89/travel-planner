@@ -9,7 +9,7 @@ import {FdDate, FdRangeDate} from '@fundamental-ngx/core';
 export class AppComponent {
   title = 'travel-planner';
   tableRows = [];
-  dates: FdRangeDate;
+  dates;
   destination;
   notes;
   showForm = false;
@@ -17,15 +17,12 @@ export class AppComponent {
 
   submitTrip() {
     this.tableRows.push({
-      dates: this.dates.start.toDateString() + ' - ' + this.dates.end.toDateString(),
+      dates: this.dates,
       destination: this.destination,
       notes: this.notes,
       files: this.files
     });
-    this.dates = {
-      start: FdDate.getToday(),
-      end: FdDate.getToday().nextDay()
-    };
+    this.dates = '';
     this.resetForm();
   }
 

@@ -1,38 +1,37 @@
-<fd-layout-panel>
-  <fd-layout-panel-header>
-    <fd-layout-panel-head>
-      <h2 fd-layout-panel-title>Travel Planner</h2>
-    </fd-layout-panel-head>
-  </fd-layout-panel-header>
-  <fd-layout-panel-body>
+<div>
+  <div>
+    <div>
+      <h2>Travel Planner</h2>
+    </div>
+  </div>
+  <div>
     <ng-container *ngIf="!showForm">
-      <fd-toolbar>
-        <label fd-toolbar-label>
+      <div>
+        <label>
           Upcoming Trips ({{tableRows.length}})
         </label>
-        <fd-toolbar-spacer></fd-toolbar-spacer>
-        <button fd-button fd-toolbar-item (click)="showForm = true;" [compact]="true" fdType="transparent" glyph="add">New Trip</button>
-      </fd-toolbar>
-      <table fd-table>
-        <thead fd-table-header>
-          <tr fd-table-row>
-            <th fd-table-cell>Purchased Flights</th>
-            <th fd-table-cell>Dates</th>
-            <th fd-table-cell>Destination</th>
-            <th fd-table-cell>Notes</th>
-            <th fd-table-cell>Attachments</th>
+        <button (click)="showForm = true;">New Trip</button>
+      </div>
+      <table>
+        <thead>
+          <tr>
+            <th>Purchased Flights</th>
+            <th>Dates</th>
+            <th>Destination</th>
+            <th>Notes</th>
+            <th>Attachments</th>
           </tr>
         </thead>
         <tbody>
-          <tr *ngFor="let row of tableRows" fd-table-row>
-            <td fd-table-cell>
-              <fd-checkbox></fd-checkbox>
+          <tr *ngFor="let row of tableRows">
+            <td>
+              <input type="checkbox"/>
             </td>
-            <td fd-table-cell>{{row.dates}}</td>
-            <td fd-table-cell>{{row.destination}}</td>
-            <td fd-table-cell>{{row.notes ? row.notes : ''}}</td>
-            <td fd-table-cell>
-              <a style="cursor: pointer;" fd-link (click)="download(row.files[0])">
+            <td>{{row.dates}}</td>
+            <td>{{row.destination}}</td>
+            <td >{{row.notes ? row.notes : ''}}</td>
+            <td>
+              <a style="cursor: pointer;" (click)="download(row.files[0])">
                 <span *ngFor="let file of files">
                   {{file.name}}
                 </span>
@@ -43,21 +42,19 @@
       </table>
     </ng-container>
     <ng-container *ngIf="showForm">
-      <div fd-form-item>
-        <fd-date-picker fd-form-control type="range" [(ngModel)]="dates"></fd-date-picker>
+      <div>
+        <input type="date" placeholder="Dates" [(ngModel)]="dates"/>
       </div>
-      <div fd-form-item>
-        <input fd-form-control type="text" placeholder="Destination" [(ngModel)]="destination"/>
+      <div>
+        <input type="text" placeholder="Destination" [(ngModel)]="destination"/>
       </div>
-      <div fd-form-item>
-        <input fd-form-control type="text" placeholder="Notes (Optional)" [(ngModel)]="notes"/>
+      <div>
+        <input type="text" placeholder="Notes (Optional)" [(ngModel)]="notes"/>
       </div>
-      <div fd-form-item>
-        <fd-file-input #fileInput [(ngModel)]="files" [multiple]="true" [accept]="'.png,.jpg'">
-          <button fd-button (click)="fileInput.open()">
-            Attachments (.jpg or .png)
-          </button>
-        </fd-file-input>
+      <div>
+        <button>
+          Attachments (.jpg or .png)
+        </button>
         Files Selected:
         <br />
         <div *ngFor="let file of files">
@@ -65,8 +62,8 @@
         </div>
         <br/>
       </div>
-      <button fd-button glyph="accept" (click)="submitTrip()" style="margin-right: 5px;">Submit</button>
-      <button fd-button glyph="decline" fdType="negative" (click)="resetForm()">Cancel</button>
+      <button (click)="submitTrip()" style="margin-right: 5px;">Submit</button>
+      <button (click)="resetForm()">Cancel</button>
     </ng-container>
-  </fd-layout-panel-body>
-</fd-layout-panel>
+  </div>
+</div>
