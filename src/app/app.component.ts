@@ -22,12 +22,12 @@ export class AppComponent {
       notes: this.notes,
       files: this.files
     });
-    this.dates = '';
     this.resetForm();
   }
 
   resetForm() {
     this.showForm = false;
+    this.dates = '';
     this.destination = '';
     this.notes = '';
     this.files = null;
