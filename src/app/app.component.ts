@@ -22,15 +22,15 @@ export class AppComponent {
       notes: this.notes,
       files: this.files
     });
-    this.dates = {
-      start: FdDate.getToday(),
-      end: FdDate.getToday().nextDay()
-    };
     this.resetForm();
   }
 
   resetForm() {
     this.showForm = false;
+    this.dates = {
+      start: null,
+      end: null
+    };
     this.destination = '';
     this.notes = '';
     this.files = null;
